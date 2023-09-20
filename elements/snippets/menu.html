@@ -11,47 +11,6 @@
 <nav class="nav">
     <div class="container">
         <ul class="list flex {% if categories | length > 4 %} justify-between {% else %} justify-center {% endif %}">
-
-            {% for category in show_categories %}
-                <li class="first-level {%- if category.children %} sub {%- endif %}">
-                    
-                    <a href="{{ category.link }}" title="{{ category.name }}">
-                        <div class="name">
-                            {{ category.name }}
-                        </div>
-                    </a>
-                    
-                    {% if category.children %}
-                    <ul class="sub-list second-level">
-                    
-                        <a href="{{ category.link }}" title="{{ category.name }}">{{ category.name }}</a>
-
-                        {% for level2 in category.children %}
-
-                            <li {% if level2.children %} class="sub" {% endif %}>
-                                
-                                <a href="{{ level2.link }}" title="{{ level2.name }}">{{ level2.name }}</a>
-                            
-                                {% if level2.children %}
-                                <ul class="sub-list third-level">
-                                    {% for level3 in level2.children %}
-                                    <li>
-                                        <a href="{{ level3.link }}" title="{{ level3.name }}">{{ level3.name }}</a>
-                                    </li>
-                                    {% endfor %}
-                                </ul>
-                                {% endif %} 
-
-                            </li>
-
-                        {% endfor %}                        
-
-                    </ul>
-                    {% endif %} 
-                    
-                </li>
-            {% endfor %}
-
             {% if more_categories %}
                 <li class="first-level sub">
             
@@ -97,6 +56,47 @@
                                        
                 </li>
             {% endif %}
+            {% for category in show_categories %}
+                <li class="first-level {%- if category.children %} sub {%- endif %}">
+                    
+                    <a href="{{ category.link }}" title="{{ category.name }}">
+                        <div class="name">
+                            {{ category.name }}
+                        </div>
+                    </a>
+                    
+                    {% if category.children %}
+                    <ul class="sub-list second-level">
+                    
+                        <a href="{{ category.link }}" title="{{ category.name }}">{{ category.name }}</a>
+
+                        {% for level2 in category.children %}
+
+                            <li {% if level2.children %} class="sub" {% endif %}>
+                                
+                                <a href="{{ level2.link }}" title="{{ level2.name }}">{{ level2.name }}</a>
+                            
+                                {% if level2.children %}
+                                <ul class="sub-list third-level">
+                                    {% for level3 in level2.children %}
+                                    <li>
+                                        <a href="{{ level3.link }}" title="{{ level3.name }}">{{ level3.name }}</a>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                                {% endif %} 
+
+                            </li>
+
+                        {% endfor %}                        
+
+                    </ul>
+                    {% endif %} 
+                    
+                </li>
+            {% endfor %}
+
+            
 
         </ul>
     </div>
